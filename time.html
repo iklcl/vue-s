@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<html>
+ 
+<head>
+    <meta charset="UTF-8" />
+    <title>pro.html</title>
+    <style type="text/css">
+    </style>
+    <!--这里是自己本地的jquery-->
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>$(function(){
+    var m=59;
+    var s=59;
+    setInterval(function(){
+        if(s<10){
+        //如果秒数少于10在前面加上0
+            $('#time').html(m+':0'+s);
+        }else{
+            $('#time').html(m+':'+s);
+        }
+        s--;
+        if(s<0){
+        //如果秒数少于0就变成59秒
+            s=59;
+            m--;
+        }
+    },1000)
+
+})</script>
+<style>
+	*{
+		padding: 0 ;
+		margin: 0 auto ;
+	}
+	.alarm{
+		width: 250px;
+		height: 300px;
+		background:rgba(55,117,168,1) ;
+		border-radius: 5px;
+		box-shadow:  0px 0px 20px #fff inset;
+		padding: 10px;
+	}
+	.alarm *{
+		color: white;
+		font-size: 14px;
+		font-weight: 100;
+		font-family: NSimSun;
+	}
+	.alarm p{	
+	}
+	.clearFloat:after{
+		content: "";
+		display: block;
+		clear: both;
+	}
+	ul li{
+		list-style: none;
+	}
+	.top li{
+		float: left;
+	} 
+	.top li:last-of-type{
+		float: right;
+	} 
+	a{
+		text-decoration: none;
+	}
+	.content{
+		padding: 20px 15px;
+	}
+	.content li::before{
+		content: '';
+		color: #488FD2;
+		width: 2px;
+		height: 2px;
+		display: block;
+		border: 2px solid #488FD2; ;
+		border-radius: 2px;
+		box-sizing: border-box;
+		margin: 0px;
+		float: left;
+		margin:0 10px ;
+		margin-top: 6px;
+		box-shadow:  0px 0px 30px #fff;
+	}
+	.codeTime{
+		padding:7px 15px ;
+	}
+	.codeTime span {
+		display: inline-block;
+		width: 15px;
+		height: 20px;
+		line-height: 20px;
+		text-align: center;
+		/*border: 1px solid #00F6FF;*/
+		color: white;
+		background:#2DADF7 ;
+		margin-left: 5px;
+		}
+</style>
+</head>
+ 
+<body>
+<div class="alarm">
+	<div class="top clearFloat">
+	<ul>
+		<li>火情控制分析</li>
+		<li><a href="#">x</a></li>
+	</ul>
+	</div>	
+	<div class="content">
+		<ul>
+			<li><p>消防车预计到达时间</p>
+				<div class="codeTime">
+					<span>0</span><span>0</span>
+					:
+					<span>0</span><span>6</span>
+					:
+					<span>2</span><span>0</span>
+				</div>
+			</li>
+			<li>消防员预计到达时间</li>
+			<li>可用消防水</li>
+			<li>预计灭火时间</li>
+			<li>风力风向</li>
+		</ul>
+	</div>
+</div>
+</body>
+ 
+</html>
