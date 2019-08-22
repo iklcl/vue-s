@@ -1,0 +1,336 @@
+
+html,
+body {
+	padding: 0;
+	margin: 0;
+}
+
+#map {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+}
+
+#map1 {
+	width: 1280px;
+	height: 720px;
+}
+
+.range-group {
+	position: absolute;
+	bottom: 120px;
+	right: 0px;
+	width: 150px;
+	height: 150px;
+	/* 	transform: rotate(-90deg);
+							-ms-transform: rotate(-90deg); 
+							-moz-transform: rotate(-90deg); 
+							-webkit-transform: rotate(-90deg);
+							-o-transform: rotate(-90deg); */
+	margin: 100px 100px;
+}
+
+.zoom {
+	border: 0.5px solid #B9B9B9 !important;
+	background: white;
+	font-weight: bolder;
+	display: block;
+	width: 35px;
+	border-radius: 5px !important;
+}
+
+#addon1 {
+	position: absolute;
+	left: 200px;
+	top: 47px;
+}
+
+#addon2 {
+	position: absolute;
+	left: 199px;
+	top: -73px;
+}
+
+input[type=range] {
+	/* margin-top: 14px; */
+	-webkit-appearance: none;
+	/*清除系统默认样式*/
+	width: 60%;
+	background: -webkit-linear-gradient(#61bd12, #61bd12) no-repeat, #ddd;
+	background-size: 100%;
+	height: 4px;
+	/*横条的高度*/
+	outline: none;
+	transform: rotate(-90deg);
+	-ms-transform: rotate(-90deg);
+	-moz-transform: rotate(-90deg);
+	-webkit-transform: rotate(-90deg);
+	-o-transform: rotate(-90deg);
+	position: absolute;
+	left: 172px;
+}
+
+/*拖动块的样式*/
+input[type=range]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	/*清除系统默认样式*/
+	height: 23px;
+	/*拖动块高度*/
+	width: 6px;
+	/*拖动块宽度*/
+	background: #fff;
+	/*拖动块背景*/
+	/* border-radius: 50%; /*外观设置为圆形*/
+	border: solid 1px #000;
+	/*设置边框*/
+}
+
+.calculation-box {
+	height: 30px;
+	width: 100px;
+	position: absolute;
+	bottom: 50px;
+	left: 310px;
+	background-color: rgba(255, 255, 255, 0);
+	padding: 5px;
+	text-align: center;
+}
+
+p {
+	font-family: 'Open Sans';
+	margin: 0;
+	font-size: 13px;
+}
+
+.inGeoJson {
+	height: 25px;
+	width: 200px;
+	position: absolute;
+	top: 20px;
+	left: 15%;
+	background-color: #DDDDDD;
+	text-align: center;
+}
+
+.outGeoJson {
+	height: 25px;
+	width: 45px;
+	position: absolute;
+	top: 20px;
+	left: 35%;
+	background-color: #DDDDDD;
+	text-align: center;
+}
+
+.btnColor {
+	height: 25px;
+	width: 150px;
+	position: absolute;
+	top: 120px;
+	left: 100px;
+	background-color: #DDDDDD;
+	text-align: center;
+}
+
+.map-overlay {
+	font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+	position: absolute;
+	width: 200px;
+	top: 0px;
+	left: 0px;
+	padding: 10px;
+}
+
+.map-overlay .map-overlay-inner {
+	background-color: #fff;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.10);
+	border-radius: 3px;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+
+.map-overlay-inner fieldset {
+	border: none;
+	padding: 0;
+	margin: 0 0 10px;
+}
+
+.map-overlay-inner fieldset:last-child {
+	margin: 0;
+}
+
+.map-overlay-inner select {
+	width: 100%;
+}
+
+.map-overlay-inner label {
+	display: block;
+	font-weight: bold;
+	margin: 0 0 5px;
+}
+
+.map-overlay-inner button {
+	display: inline-block;
+	width: 36px;
+	height: 20px;
+	border: none;
+	cursor: pointer;
+}
+
+.map-overlay-inner button:focus {
+	outline: none;
+}
+
+.map-overlay-inner button:hover {
+	box-shadow: inset 0 0 0 3px rgba(0, 0, 0, 0.10);
+}
+
+#menu {
+	background: #fff;
+	position: absolute;
+	z-index: 1;
+	top: 10px;
+	left: 10px;
+	border-radius: 3px;
+	width: 120px;
+	border: 1px solid rgba(0, 0, 0, 0.4);
+	font-family: 'Open Sans', sans-serif;
+}
+
+#menu a {
+	font-size: 13px;
+	color: #404040;
+	display: block;
+	margin: 0;
+	padding: 0;
+	padding: 10px;
+	text-decoration: none;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+	text-align: center;
+}
+
+#menu a:last-child {
+	border: none;
+}
+
+#menu a:hover {
+	background-color: #f8f8f8;
+	color: #404040;
+}
+
+#menu a.active {
+	background-color: #3887be;
+	color: #ffffff;
+}
+
+#menu a.active:hover {
+	background: #3074a4;
+}
+
+
+
+.boxdraw {
+	background: rgba(56, 135, 190, 0.1);
+	border: 1.5px solid #000000;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0;
+	height: 0;
+}
+
+.leftMenu {
+	width: 130px;
+	height: 100%;
+	background: RGB(171, 173, 205);
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	/* 				padding-top: 100px; */
+}
+
+#addLayer {
+	position: absolute;
+	width: 80px;
+	height: 30px;
+	left: 10px;
+	top: 10px;
+	background: #FFFFFF;
+	border-radius: 3px;
+	border: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+/* <link href='dist/layerMenu.css' rel='stylesheet'/> */
+/* <link href="dist/zoom.css" rel='stylesheet' /> */
+.layerBox {
+	width: 130px;
+	height: 350px;
+	background: RGBA(171, 173, 205, 0);
+	position: absolute;
+	top: 50px;
+	left: ;
+	/* 				padding-top: 100px; */
+
+}
+
+.layerBox>div {
+	/* background: #000000; */
+	/* opacity: 1 !important; */
+	padding: 0 5px;
+}
+
+.layerBox>div>input[ type="text"] {
+	height: 30px;
+	width: 80px;
+	border-style: none;
+	background-color: transparent;
+	text-align: center;
+	color: #000;
+	font-size: 20px;
+	font-weight: 300;
+}
+
+.layerBox>div>.layerCheck {}
+
+.search {
+	position: absolute;
+	top: 20px;
+	left: 50%;
+}
+
+#search-result {
+	overflow: auto;
+	max-height: 220px;
+	width: 80%;
+	margin: 1px 2px;
+}
+
+li.selected {
+	cursor: pointer;
+	background: rgba(0, 169, 230, 0.5)
+}
+
+#addLayerPage {
+	width: 180px;
+	height: 70%;
+	background: RGB(211, 213, 245);
+	position: absolute;
+	bottom: 0px;
+	left: 130px;
+	display: none;
+	/* 				padding-top: 100px; */
+}
+
+.rightMouseClickText {
+	font-size: 13px;
+	color: #404040;
+	display: block;
+	margin: 0;
+	padding: 0;
+	padding: 10px;
+	text-decoration: none;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+	text-align: left;
+}
+
