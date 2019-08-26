@@ -1,98 +1,86 @@
 <template>
-  <div class="cinema_body">
-				<ul>
-					<li>
-						<div>
-							<span>大地影院(澳东世纪店)</span>
-							<span class="q"><span class="price">22.9</span> 元起</span>
-						</div>
-						<div class="address">
-							<span>金州区大连经济技术开发区澳东世纪3层</span>
-							<span>1763.5km</span>
-						</div>
-						<div class="card">
-                			<div>小吃</div>
-                			<div>折扣卡</div>
-       					</div>
-					</li>
-					<li>
-						<div>
-							<span>大地影院(澳东世纪店)</span>
-							<span class="q"><span class="price">22.9</span> 元起</span>
-						</div>
-						<div class="address">
-							<span>金州区大连经济技术开发区澳东世纪3层</span>
-							<span>1763.5km</span>
-						</div>
-						<div class="card">
-                			<div>小吃</div>
-                			<div>折扣卡</div>
-       					</div>
-					</li>
-					<li>
-						<div>
-							<span>大地影院(澳东世纪店)</span>
-							<span class="q"><span class="price">22.9</span> 元起</span>
-						</div>
-						<div class="address">
-							<span>金州区大连经济技术开发区澳东世纪3层</span>
-							<span>1763.5km</span>
-						</div>
-						<div class="card">
-                			<div>小吃</div>
-                			<div>折扣卡</div>
-       					</div>
-					</li>
-					<li>
-						<div>
-							<span>大地影院(澳东世纪店)</span>
-							<span class="q"><span class="price">22.9</span> 元起</span>
-						</div>
-						<div class="address">
-							<span>金州区大连经济技术开发区澳东世纪3层</span>
-							<span>1763.5km</span>
-						</div>
-						<div class="card">
-                			<div>小吃</div>
-                			<div>折扣卡</div>
-       					</div>
-					</li>
-					<li>
-						<div>
-							<span>大地影院(澳东世纪店)</span>
-							<span class="q"><span class="price">22.9</span> 元起</span>
-						</div>
-						<div class="address">
-							<span>金州区大连经济技术开发区澳东世纪3层</span>
-							<span>1763.5km</span>
-						</div>
-						<div class="card">
-                			<div>小吃</div>
-                			<div>折扣卡</div>
-       					</div>
-					</li>
-					<li>
-						<div>
-							<span>大地影院(澳东世纪店)</span>
-							<span class="q"><span class="price">22.9</span> 元起</span>
-						</div>
-						<div class="address">
-							<span>金州区大连经济技术开发区澳东世纪3层</span>
-							<span>1763.5km</span>
-						</div>
-						<div class="card">
-                			<div>小吃</div>
-                			<div>折扣卡</div>
-       					</div>
-					</li>
-				</ul>
-			</div>
+    <div class="cinema_body">
+		<Scroller>	
+			<ul>
+				<!-- <li>
+					<div>
+						<span>大地影院(澳东世纪店)</span>
+						<span class="q"><span class="price">22.9</span> 元起</span>
+					</div>
+					<div class="address">
+						<span>金州区大连经济技术开发区澳东世纪3层</span>
+						<span>1763.5km</span>
+					</div>
+					<div class="card">
+						<div>小吃</div>
+						<div>折扣卡</div>
+					</div>
+				</li> -->
+				<li v-for="item in cinemaLis" :key='item.id'>
+					<div>
+						<span>{{item.nm}}</span>
+						<span class="q"><span class="price">{{item.sellPrice}}</span> 元起</span>
+					</div>
+					<div class="address">
+						<span>{{item.addr}}</span>
+						<span>{{item.distance}}</span>
+					</div>
+					<div class="card">
+						<div v-for="(num,key) in item.tag" v-if="num===1"  :class=" key | classCard" :key='key'>{{key | formatCard}}</div>
+					</div>
+				</li>
+			</ul>
+		</Scroller>	
+	</div>
 		
 </template>
 
 <script>
 export default {
-    name:'CiList'
+	name:'CiList',
+	data(){
+		return{
+			cinemaLis:[]
+		}
+	},
+	mounted(){
+        this.axios.get('/api/cinemaList?cityId=10').then((res)=>{
+          var msg=res.data.msg;
+          if(msg==='ok'){
+             this.cinemaLis =res.data.data.cinemas;
+          }
+        })
+	},
+	filters:{
+		formatCard(key){
+			var card=[
+				{key:'allowRefund',value:'改签'},
+				{key:'endorse',value:'退'},
+				{key:'sell',value:'折扣卡'},
+				{key:'snack',value:'小吃'}
+			]
+			for (let cardItem of card){
+				if(cardItem.key===key){
+					return cardItem.value;
+				}
+			}
+			return '';
+		},
+		classCard(key){
+			var card=[
+				{key:'allowRefund',value:'or'},
+				{key:'endorse',value:'or'},
+				{key:'sell',value:'bl'},
+				{key:'snack',value:'bl'}
+			]
+			for (let cardItem of card){
+				if(cardItem.key===key){
+					return cardItem.value;
+				}
+			}
+			return '';
+		}
+	}
 }
 </script>
 
