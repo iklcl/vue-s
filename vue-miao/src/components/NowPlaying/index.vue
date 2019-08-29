@@ -1,7 +1,8 @@
 <template>
 	
 	<div class="movie_body" ref='movie_body'>
-		<Scroller :handleToScroll="handleToScroll" :handleToTouchEnd="handleToTouchEnd" >
+		<Loading v-if="isLoading" />
+		<Scroller v-else :handleToScroll="handleToScroll" :handleToTouchEnd="handleToTouchEnd" >
 		<ul>
 			<!-- <li>
 				<div class="pic_show"><img src="/images/movie_1.jpg"></div>
@@ -42,14 +43,22 @@ export default {
     data(){
         return{
 			movieList:[],
-			pullDownMsg:''
+			pullDownMsg:'',
+			isLoading:true,
+			prevCityId:-1
         }
     },
-    mounted(){
-        this.axios.get('/api/movieOnInfoList?cityId=10').then((res)=>{
+    activated(){
+		var cityId = this.$store.state.city.id;
+		if(this.prevCityId===cityId){return;}
+		this.isLoading = true;
+		// console.log('123');除了切换城市时候其他点击都不刷新
+        this.axios.get('/api/movieOnInfoList?cityId='+cityId).then((res)=>{
             var msg = res.data.msg;
             if(msg==='ok'){
                 this.movieList=res.data.data.movieList;
+				this.isLoading = false;
+				this.prevCityId=cityId;
 				// 保证渲染完毕后出发
 				// this.$nextTick(()=>{
 				// 	var scroll =  new BScroll(this.$refs.movie_body,
