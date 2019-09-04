@@ -5,7 +5,7 @@ import store from './stores'
 import axios from 'axios'
 Vue.prototype.axios = axios;
 Vue.filter('setWH',(url,arg)=>{
-  return url.replace(/w\.h/,arg)
+  if(url){return url.replace(/w\.h/,arg)}
 })
 
 import Scroller from '@/components/Scroller'

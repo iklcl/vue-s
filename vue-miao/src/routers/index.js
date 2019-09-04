@@ -8,6 +8,7 @@ Vue.use(Router)
 
 export default new Router({
   mode: 'history',
+  // base:'HUHO',路由路径
   base: process.env.BASE_URL,
   routes: [
     movieRouter,
