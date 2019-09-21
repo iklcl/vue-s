@@ -1,4 +1,5 @@
 module.exports = {
+    publicPath:'/HUHO',//修改静态资源路径
     devServer:{
         proxy:{
             '/api':{
